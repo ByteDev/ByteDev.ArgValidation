@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace ByteDev.ArgValidation
 {
+    /// <summary>
+    /// Represents a set of helper methods for argument validation.
+    /// </summary>
     public static partial class ArgValidator
     {
         /// <summary>

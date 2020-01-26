@@ -43,7 +43,7 @@ All argument validation can be performed through the `ArgValidator` class.  This
 
 Example:
 
-```
+```csharp
 public Customer GetCustomer(int id)
 {
 	ArgValidator.GreaterThan(id, 0, nameof(id));
