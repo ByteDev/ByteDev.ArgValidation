@@ -10,7 +10,7 @@ namespace ByteDev.ArgValidation
     public static partial class ArgValidator
     {
         /// <summary>
-        /// Ensures an injected dependent is not null.
+        /// Ensures an injected dependent parameter is not null.
         /// </summary>
         /// <typeparam name="TDependent">Type of dependent.</typeparam>
         /// <param name="dependent">Dependent to check.</param>
@@ -19,16 +19,11 @@ namespace ByteDev.ArgValidation
         public static void DependentNotNull<TDependent>(TDependent dependent, string dependentName = null) where TDependent : class
         {
             if (dependent == null)
-            {
-                if (dependentName == null)
-                    throw new DependentNullException($"Dependent type '{typeof(TDependent).FullName}' cannot be null.");
-
-                throw new DependentNullException($"Dependent '{dependentName}' of type '{typeof(TDependent).FullName}' cannot be null.");
-            }
+                ExceptionThrower.DependentNotNullException<TDependent>(dependentName);
         }
 
         /// <summary>
-        /// Ensures an object is not null.
+        /// Ensures a parameter is not null.
         /// </summary>
         /// <typeparam name="TParam">Type of parameter being checked.</typeparam>
         /// <param name="param">Parameter to check.</param>
@@ -41,7 +36,7 @@ namespace ByteDev.ArgValidation
         }
 
         /// <summary>
-        /// Ensures a value type is not its default value.
+        /// Ensures a parameter is not its default value.
         /// </summary>
         /// <typeparam name="TParam">Type of parameter being checked.</typeparam>
         /// <param name="param">Parameter to check.</param>
@@ -66,7 +61,7 @@ namespace ByteDev.ArgValidation
         }
 
         /// <summary>
-        /// Ensures a collection is not empty.
+        /// Ensures a sequence is not empty.
         /// </summary>
         /// <typeparam name="TItem">Type of items in the collection.</typeparam>
         /// <param name="param">Parameter to check.</param>
@@ -92,7 +87,7 @@ namespace ByteDev.ArgValidation
         }
 
         /// <summary>
-        /// Ensures a collection is not null or empty.
+        /// Ensures a sequence is not null or empty.
         /// </summary>
         /// <typeparam name="TItem">Type of items in the collection.</typeparam>
         /// <param name="param">Parameter to check.</param>

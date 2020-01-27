@@ -13,7 +13,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(sbyte param, sbyte value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -26,7 +26,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(byte param, byte value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -39,7 +39,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(short param, short value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -52,7 +52,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(ushort param, ushort value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -65,7 +65,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(int param, int value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -78,7 +78,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(uint param, uint value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -91,7 +91,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(long param, long value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -104,7 +104,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(ulong param, ulong value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString());
         }
 
@@ -117,7 +117,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(float param, float value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString(CultureInfo.InvariantCulture));
         }
 
@@ -130,7 +130,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(double param, double value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanOrEqualException(paramName, value.ToString(CultureInfo.InvariantCulture));
         }
 
@@ -143,7 +143,7 @@ namespace ByteDev.ArgValidation
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be less than or equal to <paramref name="value" />.</exception>
         public static void LessThanOrEqual(decimal param, decimal value, string paramName = null)
         {
-            if (param >= value)
+            if (param > value)
                 ExceptionThrower.ThrowLessThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
         }
     }

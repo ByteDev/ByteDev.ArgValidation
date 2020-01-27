@@ -4,6 +4,14 @@ namespace ByteDev.ArgValidation
 {
     internal static class ExceptionThrower
     {
+        public static void DependentNotNullException<TDependent>(string dependentName)
+        {
+            if (dependentName == null)
+                throw new DependentNullException($"Dependent type '{typeof(TDependent).FullName}' cannot be null.");
+
+            throw new DependentNullException($"Dependent '{dependentName}' of type '{typeof(TDependent).FullName}' cannot be null.");
+        }
+
         public static void ThrowLessThanException(string paramName, string value)
         {
             if(paramName != null)

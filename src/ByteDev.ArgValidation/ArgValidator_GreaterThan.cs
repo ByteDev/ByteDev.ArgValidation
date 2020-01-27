@@ -146,6 +146,5 @@ namespace ByteDev.ArgValidation
             if (param <= value)
                 ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
         }
-
     }
 }
