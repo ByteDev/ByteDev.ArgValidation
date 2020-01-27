@@ -117,5 +117,42 @@ namespace ByteDev.ArgValidation
             if(param.Equals(value))
                 throw new ArgumentException($"Parameter cannot be equal to {value}.", paramName);
         }
+
+        /// <summary>
+        /// Ensures a parameter is contained in a sequence of values.
+        /// </summary>
+        /// <typeparam name="TParam">Type of parameter.</typeparam>
+        /// <param name="param">Parameter to check.</param>
+        /// <param name="values">Set of values to check against.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must be in the sequence of provided values.</exception>
+        public static void In<TParam>(TParam param, IEnumerable<TParam> values, string paramName = null)
+        {
+            if (values == null || !values.Any())
+                return;
+
+            if (values.Contains(param))
+                return;
+
+            ExceptionThrower.ThrowInException(param, paramName);
+        }
+
+        /// <summary>
+        /// Ensures a parameter is not contained in a sequence of values.
+        /// </summary>
+        /// <typeparam name="TParam">Type of parameter.</typeparam>
+        /// <param name="param">Parameter to check.</param>
+        /// <param name="values">Set of values to check against.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> must not be in the sequence of provided values.</exception>
+        public static void NotIn<TParam>(TParam param, IEnumerable<TParam> values, string paramName = null)
+        {
+            if (values == null)
+                return;
+
+            if (values.Contains(param))
+                ExceptionThrower.ThrowNotInException(param, paramName);
+        }
     }
 }
+

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace ByteDev.ArgValidation.UnitTests
@@ -228,7 +229,7 @@ namespace ByteDev.ArgValidation.UnitTests
             [Test]
             public void WhenIsNotNull_ThenThrowException()
             {
-                AssetEx.DoesNotThrow(() => ArgValidator.DependentNotNull(new TestCustomer()));
+                Assert.DoesNotThrow(() => ArgValidator.DependentNotNull(new TestCustomer()));
             }
         }
 
@@ -248,7 +249,68 @@ namespace ByteDev.ArgValidation.UnitTests
             {
                 const int param = 1;
 
-                AssetEx.DoesNotThrow(() => ArgValidator.NotEquals(param, 2));
+                Assert.DoesNotThrow(() => ArgValidator.NotEquals(param, 2));
+            }
+        }
+
+        [TestFixture]
+        public class In : ArgValidatorTest
+        {
+            private const int Param = 1;
+
+            [Test]
+            public void WhenParamValueIsNotInValues_ThenThrowException()
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => ArgValidator.In(Param, new[] {2, 3}));
+            }
+
+            [Test]
+            public void WhenParamValueIsInValues_ThenDoNotThrowException()
+            {
+
+                Assert.DoesNotThrow(() => ArgValidator.In(Param, new[] { 2, 1, 3 }));
+            }
+
+            [Test]
+            public void WhenValuesIsNull_ThenDoesNotThrowException()
+            {
+                Assert.DoesNotThrow(() => ArgValidator.In(Param, null));
+            }
+
+            [Test]
+            public void WhenValuesIsEmpty_ThenDoesNotThrowException()
+            {
+                Assert.DoesNotThrow(() => ArgValidator.In(Param, new int[0]));
+            }
+        }
+
+        [TestFixture]
+        public class NotIn : ArgValidatorTest
+        {
+            private const int Param = 1;
+
+            [Test]
+            public void WhenParamValueIsInValues_ThenThrowException()
+            {
+                Assert.Throws<ArgumentOutOfRangeException>(() => ArgValidator.NotIn(Param, new[] { 2, 1, 3 }));
+            }
+
+            [Test]
+            public void WhenParamValueIsNotInValues_ThenDoNotThrowException()
+            {
+                Assert.DoesNotThrow(() => ArgValidator.NotIn(Param, new[] { 2, 3 }));
+            }
+
+            [Test]
+            public void WhenValuesIsNull_ThenDoesNotThrowException()
+            {
+                Assert.DoesNotThrow(() => ArgValidator.NotIn(Param, null));
+            }
+
+            [Test]
+            public void WhenValuesIsEmpty_ThenDoesNotThrowException()
+            {
+                Assert.DoesNotThrow(() => ArgValidator.NotIn(Param, new int[0]));
             }
         }
     }

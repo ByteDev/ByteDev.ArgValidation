@@ -31,15 +31,16 @@ The repo can be cloned from git bash:
 
 All argument validation can be performed through the `ArgValidator` class.  This class has a number of static methods:
 - DependentNotNull
-- NotNull
-- NotDefault
-- NotEmpty
-- NotNullOrEmpty
-- NotEquals
 - GreaterThan
 - GreaterThanOrEqual
-- LessThan
+- In
 - LessThanOrEqual
+- NotDefault
+- NotEmpty
+- NotEquals
+- NotIn
+- NotNull
+- NotNullOrEmpty
 
 Example:
 
