@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6B9FC7DF
 		ByteDev.ArgValidation.nuspec = ByteDev.ArgValidation.nuspec
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApp", "TestApp", "{CFBE773E-EE52-49FB-B317-6A67A8638AAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteDev.ArgValidation.TestApp", "ByteDev.ArgValidation.TestApp\ByteDev.ArgValidation.TestApp.csproj", "{DE94163E-ADF5-4F28-9966-57D6329B8A38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +39,17 @@ Global
 		{8B646BB2-B441-437A-A6BA-6ADB474151FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B646BB2-B441-437A-A6BA-6ADB474151FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B646BB2-B441-437A-A6BA-6ADB474151FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE94163E-ADF5-4F28-9966-57D6329B8A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE94163E-ADF5-4F28-9966-57D6329B8A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE94163E-ADF5-4F28-9966-57D6329B8A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE94163E-ADF5-4F28-9966-57D6329B8A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8B646BB2-B441-437A-A6BA-6ADB474151FD} = {3E8E859F-C03D-4D02-9EFC-3C4E730D5CF8}
+		{DE94163E-ADF5-4F28-9966-57D6329B8A38} = {CFBE773E-EE52-49FB-B317-6A67A8638AAD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BBC6803E-A37D-4CE0-86E8-C925858B6388}
