@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ByteDev.ArgValidation</id>
+    <version>0.0.1</version>
+    <title>ByteDev.ArgValidation</title>
+    <authors>Paul Stanley</authors>
+    <owners>Paul Stanley</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Set of helper methods to help validate arguments.</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>argument arg parameter param validation validator exception</tags>
+    <iconUrl>https://raw.githubusercontent.com/bytedev/ByteDev.ArgValidation/master/images/icon.png</iconUrl>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\ByteDev.ArgValidation\bin\Release\netstandard2.0\ByteDev.ArgValidation.dll" target="lib\netstandard2.0" />
+    <file src="..\src\ByteDev.ArgValidation\bin\Release\netstandard2.0\ByteDev.ArgValidation.xml" target="lib\netstandard2.0" />
+  </files>
+</package>
