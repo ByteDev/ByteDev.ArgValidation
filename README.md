@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/bytedev/ByteDev.ArgValidation?branch=master&svg=true)](https://ci.appveyor.com/project/bytedev/ByteDev-ArgValidation/branch/master)
 [![NuGet Package](https://img.shields.io/nuget/v/ByteDev.ArgValidation.svg)](https://www.nuget.org/packages/ByteDev.ArgValidation)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/490a3d7051e04bcd91f561c0c3de4f72)](https://www.codacy.com/manual/ByteDev/ByteDev.ArgValidation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ByteDev/ByteDev.ArgValidation&amp;utm_campaign=Badge_Grade)
 
 # ByteDev.ArgValidation
 
