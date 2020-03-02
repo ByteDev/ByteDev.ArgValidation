@@ -35,6 +35,7 @@ All argument validation can be performed through the `ArgValidator` class.  This
 - GreaterThan
 - GreaterThanOrEqual
 - In
+- LessThan
 - LessThanOrEqual
 - NotDefault
 - NotEmpty
