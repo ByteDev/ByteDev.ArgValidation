@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6B9FC7DF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteDev.ArgValidation", "src\ByteDev.ArgValidation\ByteDev.ArgValidation.csproj", "{CC291C86-5FF8-4F6C-8955-5F77840A005E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteDev.ArgValidation.UnitTests", "test\ByteDev.ArgValidation.UnitTests\ByteDev.ArgValidation.UnitTests.csproj", "{853833FD-1BC5-48E2-B0D9-2012A43A2D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ByteDev.ArgValidation.UnitTests", "tests\ByteDev.ArgValidation.UnitTests\ByteDev.ArgValidation.UnitTests.csproj", "{853833FD-1BC5-48E2-B0D9-2012A43A2D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

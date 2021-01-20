@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace ByteDev.ArgValidation.UnitTests
 {
     [TestFixture]
-    public class ArgValidatorTest
+    public class ArgValidatorTests
     {
         [TestFixture]
         public class NotNull
@@ -325,7 +325,7 @@ namespace ByteDev.ArgValidation.UnitTests
         }
 
         [TestFixture]
-        public class NotEquals : ArgValidatorTest
+        public class NotEquals : ArgValidatorTests
         {
             [Test]
             public void WhenEqualsValue_ThenThrowsException()
@@ -345,7 +345,7 @@ namespace ByteDev.ArgValidation.UnitTests
         }
 
         [TestFixture]
-        public class In : ArgValidatorTest
+        public class In : ArgValidatorTests
         {
             private const int Param = 1;
 
@@ -376,7 +376,7 @@ namespace ByteDev.ArgValidation.UnitTests
         }
 
         [TestFixture]
-        public class NotIn : ArgValidatorTest
+        public class NotIn : ArgValidatorTests
         {
             private const int Param = 1;
 
