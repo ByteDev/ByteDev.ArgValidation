@@ -10,16 +10,16 @@ namespace ByteDev.ArgValidation
     public static partial class ArgValidator
     {
         /// <summary>
-        /// Ensures an injected dependent parameter is not null.
+        /// Ensures an injected dependency parameter is not null.
         /// </summary>
-        /// <typeparam name="TDependent">Type of dependent.</typeparam>
-        /// <param name="dependent">Dependent to check.</param>
-        /// <param name="dependentName">Name of the dependent parameter.</param>
-        /// <exception cref="T:ByteDev.ArgValidation.DependentNullException"><paramref name="dependent" /> is null.</exception>
-        public static void DependentNotNull<TDependent>(TDependent dependent, string dependentName = null) where TDependent : class
+        /// <typeparam name="TDependency">Type of dependency.</typeparam>
+        /// <param name="dependency">Dependency to check.</param>
+        /// <param name="dependencyName">Name of the dependency parameter.</param>
+        /// <exception cref="T:ByteDev.Exceptions.DependencyNullException"><paramref name="dependency" /> is null.</exception>
+        public static void DependencyNotNull<TDependency>(TDependency dependency, string dependencyName = null) where TDependency : class
         {
-            if (dependent == null)
-                ExceptionThrower.DependentNotNullException<TDependent>(dependentName);
+            if (dependency == null)
+                ExceptionThrower.ThrowDependencyNullException<TDependency>(dependencyName);
         }
 
         /// <summary>
@@ -41,19 +41,19 @@ namespace ByteDev.ArgValidation
         /// <typeparam name="TParam">Type of parameter being checked.</typeparam>
         /// <param name="param">Parameter to check.</param>
         /// <param name="paramName">Name of the parameter.</param>
-        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is it's default value.</exception>
+        /// <exception cref="T:ByteDev.Exceptions.ArgumentDefaultException"><paramref name="param" /> is it's default value.</exception>
         public static void NotDefault<TParam>(TParam param, string paramName = null) where TParam : struct
         {
             if (param.Equals(default(TParam)))
-                throw new ArgumentException("Parameter cannot be it's default value.", paramName);
+                ExceptionThrower.ThrowArgumentDefaultException(paramName);
         }
-
+        
         /// <summary>
         /// Ensures a string is not empty.
         /// </summary>
         /// <param name="param">Parameter to check.</param>
         /// <param name="paramName">Name of the parameter.</param>
-        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is empty.</exception>
+        /// <exception cref="T:ByteDev.Exceptions.ArgumentEmptyException"><paramref name="param" /> is empty.</exception>
         public static void NotEmpty(string param, string paramName = null)
         {
             if (param == string.Empty)
@@ -66,7 +66,7 @@ namespace ByteDev.ArgValidation
         /// <typeparam name="TItem">Type of items in the collection.</typeparam>
         /// <param name="param">Parameter to check.</param>
         /// <param name="paramName">Name of parameter.</param>
-        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is empty.</exception>
+        /// <exception cref="T:ByteDev.Exceptions.ArgumentEmptyException"><paramref name="param" /> is empty.</exception>
         public static void NotEmpty<TItem>(IEnumerable<TItem> param, string paramName = null)
         {
             if (!param.Any())
@@ -78,12 +78,11 @@ namespace ByteDev.ArgValidation
         /// </summary>
         /// <param name="param">Parameter to check.</param>
         /// <param name="paramName">Name of the parameter.</param>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="param" /> is null.</exception>
-        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is empty.</exception>
+        /// <exception cref="T:ByteDev.Exceptions.ArgumentNullOrEmptyException"><paramref name="param" /> is null or empty.</exception>
         public static void NotNullOrEmpty(string param, string paramName = null)
         {
-            NotNull(param, paramName);
-            NotEmpty(param, paramName);
+            if (string.IsNullOrEmpty(param))
+                ExceptionThrower.ThrowIsNullOrEmptyException(paramName);
         }
 
         /// <summary>
@@ -92,12 +91,11 @@ namespace ByteDev.ArgValidation
         /// <typeparam name="TItem">Type of items in the collection.</typeparam>
         /// <param name="param">Parameter to check.</param>
         /// <param name="paramName">Name of the parameter.</param>
-        /// <exception cref="T:System.ArgumentNullException"><paramref name="param" /> is null.</exception>
-        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is empty.</exception>
+        /// <exception cref="T:ByteDev.Exceptions.ArgumentNullOrEmptyException"><paramref name="param" /> is null or empty.</exception>
         public static void NotNullOrEmpty<TItem>(IEnumerable<TItem> param, string paramName = null)
         {
-            NotNull(param, paramName);
-            NotEmpty(param, paramName);
+            if (param == null || !param.Any())
+                ExceptionThrower.ThrowIsNullOrEmptyException(paramName);
         }
 
         /// <summary>
@@ -107,10 +105,20 @@ namespace ByteDev.ArgValidation
         /// <param name="param">Parameter to check.</param>
         /// <param name="value">Value that the parameter must not equal.</param>
         /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="T:System.ArgumentException"><paramref name="param" /> is equal to <paramref name="value" />.</exception>
         public static void NotEquals<TParam>(TParam param, TParam value, string paramName = null)
         {
-            if(param.Equals(value))
-                throw new ArgumentException($"Parameter cannot be equal to {value}.", paramName);
+            if (param == null)
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Parameter cannot be equal to null.", paramName);
+                }
+            }
+            else if (param.Equals(value))
+            {
+                throw new ArgumentException($"Parameter cannot be equal to '{value}'.", paramName);
+            }
         }
 
         /// <summary>

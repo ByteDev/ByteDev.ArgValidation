@@ -1,5 +1,22 @@
 # Release Notes
 
+## 2.0.0 - 25 January 2021
+
+Breaking changes:
+- Removed `DependentNullException`.
+- Renamed method `DependentNotNull` to `DependencyNotNull`.
+- Method `DependencyNotNull` now throws `DependencyNullException`.
+- Method `NotDefault` now throws `ArgumentDefaultException`.
+- Method `NotEmpty` now throws `ArgumentEmptyException`.
+- Method `NotNullOrEmpty` now throws `ArgumentNullOrEmptyException`.
+
+New features:
+- (None)
+
+Bug fixes / internal changes:
+- Various fixes to handle nulls better.
+- Now uses `ByteDev.Exceptions` package dependency.
+
 ## 1.0.1 - 20 January 2021
 
 Breaking changes:

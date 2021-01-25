@@ -1,15 +1,24 @@
 ﻿using System;
+using ByteDev.Exceptions;
 
 namespace ByteDev.ArgValidation
 {
     internal static class ExceptionThrower
     {
-        public static void DependentNotNullException<TDependent>(string dependentName)
+        public static void ThrowDependencyNullException<TDependent>(string dependentName)
         {
             if (dependentName == null)
-                throw new DependentNullException($"Dependent type '{typeof(TDependent).FullName}' cannot be null.");
+                throw new DependencyNullException(typeof(TDependent));
 
-            throw new DependentNullException($"Dependent '{dependentName}' of type '{typeof(TDependent).FullName}' cannot be null.");
+            throw new DependencyNullException(typeof(TDependent), dependentName);
+        }
+
+        public static void ThrowArgumentDefaultException(string paramName)
+        {
+            if (paramName == null)
+                throw new ArgumentDefaultException();
+
+            throw new ArgumentDefaultException(paramName);
         }
 
         public static void ThrowLessThanException(string paramName, string value)
@@ -47,9 +56,9 @@ namespace ByteDev.ArgValidation
         public static void ThrowIsEmptyException(string paramName)
         {
             if(paramName != null)
-                throw new ArgumentException($"Parameter '{paramName}' cannot be empty.", paramName);
+                throw new ArgumentEmptyException(paramName);
                 
-            throw new ArgumentException("Parameter cannot be empty.");
+            throw new ArgumentEmptyException();
         }
 
         public static void ThrowInException<TParam>(TParam param, string paramName)
@@ -66,6 +75,14 @@ namespace ByteDev.ArgValidation
                 throw new ArgumentOutOfRangeException($"Parameter value: '{param}' was in the provided sequence of values.");
 
             throw new ArgumentOutOfRangeException(paramName, $"Parameter '{paramName}' value: '{param}' was in the provided sequence of values.");
+        }
+
+        public static void ThrowIsNullOrEmptyException(string paramName)
+        {
+            if (paramName == null)
+                throw new ArgumentNullOrEmptyException();
+
+            throw new ArgumentNullOrEmptyException(paramName);
         }
     }
 }

@@ -26,7 +26,8 @@ Full details of the release notes can be viewed on [GitHub](https://github.com/B
 ## Usage
 
 All argument validation can be performed through the `ArgValidator` class.  This class has a number of static methods:
-- DependentNotNull
+
+- DependencyNotNull
 - GreaterThan
 - GreaterThanOrEqual
 - In
