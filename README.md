@@ -7,8 +7,7 @@
 
 .NET Standard library of helper methods to help validate arguments.
 
-The library is dependent on the package [`ByteDev.Exceptions`](https://github.com/ByteDev/ByteDev.Exceptions) and uses the custom exceptions from that package where appropriate.
-If use of exceptions from the package is not desired I would recommend a project such as [GuardClauses](https://github.com/ardalis/GuardClauses) instead.
+The library is dependent on the package [`ByteDev.Exceptions`](https://github.com/ByteDev/ByteDev.Exceptions) and uses the custom exceptions from that package where appropriate.  If use of exceptions from the package is not desired I would recommend a project such as [GuardClauses](https://github.com/ardalis/GuardClauses) instead.
 
 ## Installation
 
