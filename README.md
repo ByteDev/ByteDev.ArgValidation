@@ -5,7 +5,10 @@
 
 # ByteDev.ArgValidation
 
-Set of helper methods to help validate arguments.
+.NET Standard library of helper methods to help validate arguments.
+
+The library is dependent on the package [`ByteDev.Exceptions`](https://github.com/ByteDev/ByteDev.Exceptions) and uses the custom exceptions from that package where appropriate.
+If use of exceptions from the package is not desired I would recommend a project such as [GuardClauses](https://github.com/ardalis/GuardClauses) instead.
 
 ## Installation
 
@@ -25,9 +28,8 @@ Full details of the release notes can be viewed on [GitHub](https://github.com/B
 
 ## Usage
 
-All argument validation can be performed through the `ArgValidator` class.  This class has a number of static methods:
+All argument validation can be performed through the `ArgMustBe` class.  This class has a number of static methods:
 
-- DependencyNotNull
 - GreaterThan
 - GreaterThanOrEqual
 - In
@@ -38,6 +40,7 @@ All argument validation can be performed through the `ArgValidator` class.  This
 - NotEquals
 - NotIn
 - NotNull
+- NotNullDependency
 - NotNullOrEmpty
 
 Example:
@@ -45,7 +48,7 @@ Example:
 ```csharp
 public Customer GetCustomer(int id)
 {
-	ArgValidator.GreaterThan(id, 0, nameof(id));
+	ArgMustBe.GreaterThan(id, 0, nameof(id));
 
 	// ...
 }

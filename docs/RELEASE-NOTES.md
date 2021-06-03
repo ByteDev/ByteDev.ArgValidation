@@ -1,5 +1,17 @@
 # Release Notes
 
+## 3.0.0 - 03 June 2021
+
+Breaking changes:
+- Renamed type `ArgValidator` to `ArgMustBe`.
+- Renamed method `DependencyNotNull` to `NotNullDependency`.
+
+New features:
+- (None)
+
+Bug fixes / internal changes:
+- (None)
+
 ## 2.0.0 - 25 January 2021
 
 Breaking changes:

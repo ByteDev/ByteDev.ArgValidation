@@ -7,7 +7,7 @@ namespace ByteDev.ArgValidation
     /// <summary>
     /// Represents a set of helper methods for argument validation.
     /// </summary>
-    public static partial class ArgValidator
+    public static partial class ArgMustBe
     {
         /// <summary>
         /// Ensures an injected dependency parameter is not null.
@@ -16,7 +16,7 @@ namespace ByteDev.ArgValidation
         /// <param name="dependency">Dependency to check.</param>
         /// <param name="dependencyName">Name of the dependency parameter.</param>
         /// <exception cref="T:ByteDev.Exceptions.DependencyNullException"><paramref name="dependency" /> is null.</exception>
-        public static void DependencyNotNull<TDependency>(TDependency dependency, string dependencyName = null) where TDependency : class
+        public static void NotNullDependency<TDependency>(TDependency dependency, string dependencyName = null) where TDependency : class
         {
             if (dependency == null)
                 ExceptionThrower.ThrowDependencyNullException<TDependency>(dependencyName);

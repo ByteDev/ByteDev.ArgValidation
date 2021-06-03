@@ -2,7 +2,7 @@
 
 namespace ByteDev.ArgValidation
 {
-    public static partial class ArgValidator
+    public static partial class ArgMustBe
     {
         /// <summary>
         /// Ensures a param is less than the <paramref name="value" />.
