@@ -29,6 +29,7 @@ Full details of the release notes can be viewed on [GitHub](https://github.com/B
 
 All argument validation can be performed through the `ArgMustBe` class.  This class has a number of static methods:
 
+- Between
 - GreaterThan
 - GreaterThanOrEqual
 - In
@@ -41,6 +42,7 @@ All argument validation can be performed through the `ArgMustBe` class.  This cl
 - NotNull
 - NotNullDependency
 - NotNullOrEmpty
+- NotNullOrWhiteSpace
 
 Example:
 
