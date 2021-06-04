@@ -1,5 +1,17 @@
 # Release Notes
 
+## 3.1.0 - 04 June 2021
+
+Breaking changes:
+- (None)
+
+New features:
+- Added `NotNullOrWhiteSpace`.
+- Added `Between`.
+
+Bug fixes / internal changes:
+- Fixed bug in `In`, `NotIn`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`, `LessThanOrEqual` where param name being set with exception message.
+
 ## 3.0.0 - 03 June 2021
 
 Breaking changes:

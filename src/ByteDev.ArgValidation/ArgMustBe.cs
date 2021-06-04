@@ -86,6 +86,18 @@ namespace ByteDev.ArgValidation
         }
 
         /// <summary>
+        /// Ensures a string is not null or whitespace.
+        /// </summary>
+        /// <param name="param">Parameter to check.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="T:ByteDev.Exceptionns.ArgumentNullOrWhiteSpaceException"><paramref name="param" /> is null or whitespace.</exception>
+        public static void NotNullOrWhiteSpace(string param, string paramName = null)
+        {
+            if (string.IsNullOrWhiteSpace(param))
+                ExceptionThrower.ThrowIsNullOrWhiteSpace(paramName);
+        }
+
+        /// <summary>
         /// Ensures a sequence is not null or empty.
         /// </summary>
         /// <typeparam name="TItem">Type of items in the collection.</typeparam>
@@ -155,6 +167,24 @@ namespace ByteDev.ArgValidation
 
             if (values.Contains(param))
                 ExceptionThrower.ThrowNotInException(param, paramName);
+        }
+
+        /// <summary>
+        /// Ensures a parameter is within a given range.
+        /// </summary>
+        /// <typeparam name="TParam">Type of parameter.</typeparam>
+        /// <param name="param">Parameter to check.</param>
+        /// <param name="from">Inclusive start of the range.</param>
+        /// <param name="to">Inclusive end of the range.</param>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <exception cref="T:System.ArgumentException"><paramref name="from" /> must be less or equal to <paramref name="to" /></exception>
+        /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="param" /> was not within the range.</exception>
+        public static void Between<TParam>(TParam param, TParam from, TParam to, string paramName = null)
+        {
+            var range = new Range<TParam>(from, to);
+
+            if (!range.IsInRange(param))
+                ExceptionThrower.ThrowNotBetween(param, from, to, paramName);
         }
     }
 }

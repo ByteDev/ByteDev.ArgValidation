@@ -14,7 +14,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(sbyte param, sbyte value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(byte param, byte value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(short param, short value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(ushort param, ushort value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(int param, int value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(uint param, uint value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(long param, long value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(ulong param, ulong value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowLessThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(float param, float value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowLessThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(double param, double value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowLessThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace ByteDev.ArgValidation
         public static void LessThan(decimal param, decimal value, string paramName = null)
         {
             if (param >= value)
-                ExceptionThrower.ThrowLessThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowLessThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
     }
 }

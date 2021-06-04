@@ -68,8 +68,8 @@ namespace ByteDev.ArgValidation.UnitTests
         [TestFixture]
         public class NotEmpty : ArgMustBeTests
         {
-            [TestCase("A")]
             [TestCase(null)]
+            [TestCase("A")]
             public void WhenNotEmpty_ThenNotThrowException(string param)
             {
                 Assert.DoesNotThrow(() => ArgMustBe.NotEmpty(param));
@@ -84,7 +84,7 @@ namespace ByteDev.ArgValidation.UnitTests
             [Test]
             public void WhenCollectionIsEmpty_ThenThrowException()
             {
-                Assert.Throws<ArgumentEmptyException>(() => ArgMustBe.NotEmpty(Enumerable.Empty<string>()));
+                var x = Assert.Throws<ArgumentEmptyException>(() => ArgMustBe.NotEmpty(Enumerable.Empty<string>()));
             }
         }
 
@@ -141,6 +141,37 @@ namespace ByteDev.ArgValidation.UnitTests
         }
 
         [TestFixture]
+        public class NotNullOrWhiteSpace : ArgMustBeTests
+        {
+            [Test]
+            public void WhenNotNullOrWhiteSpace_ThenNotThrowException()
+            {
+                const string param = "Test";
+
+                Assert.DoesNotThrow(() => ArgMustBe.NotNullOrWhiteSpace(param));
+            }
+
+            [TestCase(null)]
+            [TestCase("")]
+            [TestCase(" ")]
+            [TestCase("\t")]
+            [TestCase("\r")]
+            [TestCase("\n")]
+            public void WhenNullOrEmptyOrWhitespace_ThenThrowException(string value)
+            {
+                var ex = Assert.Throws<ArgumentNullOrWhiteSpaceException>(() => ArgMustBe.NotNullOrWhiteSpace(value));
+                Assert.That(ex.ParamName, Is.Null);
+            }
+
+            [Test]
+            public void WhenParamNamePassedIn_ThenSetExceptionParamName()
+            {
+                var ex = Assert.Throws<ArgumentNullOrWhiteSpaceException>(() => ArgMustBe.NotNullOrWhiteSpace(null, "value"));
+                Assert.That(ex.ParamName, Is.EqualTo("value"));
+            }
+        }
+
+        [TestFixture]
         public class NotEquals : ArgMustBeTests
         {
             [Test]
@@ -175,60 +206,86 @@ namespace ByteDev.ArgValidation.UnitTests
         [TestFixture]
         public class In : ArgMustBeTests
         {
-            private const int Param = 1;
-
-            [Test]
-            public void WhenParamValueIsNotInValues_ThenThrowException()
-            {
-                Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.In(Param, new[] {2, 3}));
-            }
+            private const string ParamName = "value";
+            private const int ParamValue = 1;
 
             [Test]
             public void WhenParamValueIsInValues_ThenDoNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.In(Param, new[] { 2, 1, 3 }));
+                Assert.DoesNotThrow(() => ArgMustBe.In(ParamValue, new[] { 2, 1, 3 }));
             }
 
             [Test]
             public void WhenValuesIsNull_ThenDoesNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.In(Param, null));
+                Assert.DoesNotThrow(() => ArgMustBe.In(ParamValue, null));
             }
 
             [Test]
             public void WhenValuesIsEmpty_ThenDoesNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.In(Param, Enumerable.Empty<int>()));
+                Assert.DoesNotThrow(() => ArgMustBe.In(ParamValue, Enumerable.Empty<int>()));
+            }
+
+            [Test]
+            public void WhenParamValueIsNotInValues_ThenThrowException()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.In(ParamValue, new[] {2, 3}));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was not in the allowed sequence of values."));
+                Assert.That(ex.ParamName, Is.Null);
+            }
+
+            [Test]
+            public void WhenParamNamePassedIn_ThenSetExceptionParamName()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.In(ParamValue, new[] {2, 3}, ParamName));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was not in the allowed sequence of values. (Parameter '{ParamName}')"));
+                Assert.That(ex.ParamName, Is.EqualTo(ParamName));
             }
         }
-
+        
         [TestFixture]
         public class NotIn : ArgMustBeTests
         {
-            private const int Param = 1;
-
-            [Test]
-            public void WhenParamValueIsInValues_ThenThrowException()
-            {
-                Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.NotIn(Param, new[] { 2, 1, 3 }));
-            }
+            private const string ParamName = "value";
+            private const int ParamValue = 1;
 
             [Test]
             public void WhenParamValueIsNotInValues_ThenDoNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.NotIn(Param, new[] { 2, 3 }));
+                Assert.DoesNotThrow(() => ArgMustBe.NotIn(ParamValue, new[] { 2, 3 }));
             }
 
             [Test]
             public void WhenValuesIsNull_ThenDoesNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.NotIn(Param, null));
+                Assert.DoesNotThrow(() => ArgMustBe.NotIn(ParamValue, null));
             }
 
             [Test]
             public void WhenValuesIsEmpty_ThenDoesNotThrowException()
             {
-                Assert.DoesNotThrow(() => ArgMustBe.NotIn(Param, new int[0]));
+                Assert.DoesNotThrow(() => ArgMustBe.NotIn(ParamValue, Enumerable.Empty<int>()));
+            }
+
+            [Test]
+            public void WhenParamValueIsInValues_ThenThrowException()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.NotIn(ParamValue, new[] { 2, 1, 3 }));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was in the not allowed sequence of values."));
+                Assert.That(ex.ParamName, Is.Null);
+            }
+
+            [Test]
+            public void WhenParamNamePassedIn_ThenSetExceptionParamName()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.NotIn(ParamValue, new[] { 2, 1, 3 }, ParamName));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was in the not allowed sequence of values. (Parameter '{ParamName}')"));
+                Assert.That(ex.ParamName, Is.EqualTo(ParamName));
             }
         }
 
@@ -437,6 +494,52 @@ namespace ByteDev.ArgValidation.UnitTests
                 Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.LessThanOrEqual(2.0f, 1.0f));
                 Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.LessThanOrEqual(2.0d, 1.0d));
                 Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.LessThanOrEqual(2.0M, 1.0M));
+            }
+        }
+
+        [TestFixture]
+        public class Between : ArgMustBeTests
+        {
+            private const string ParamName = "value";
+            private const int ParamValue = 5;
+
+            [Test]
+            public void WhenFromIsGreaterThanTo_ThenThrowException()
+            {
+                var ex = Assert.Throws<ArgumentException>(() => ArgMustBe.Between(ParamValue, 2, 1));
+
+                Assert.That(ex.Message, Is.EqualTo("Range from value should be less than or equal to the range to value."));
+            }
+            
+            [TestCase(4, 6)]
+            [TestCase(4, 5)]
+            [TestCase(5, 6)]
+            [TestCase(5, 5)]
+            [TestCase(-1, 5)]
+            public void WhenValueIsBetween_ThenDoNotThrowException(int from, int to)
+            {
+                Assert.DoesNotThrow(() => ArgMustBe.Between(ParamValue, from, to));
+            }
+
+            [TestCase(-2, -1)]
+            [TestCase(1, 2)]
+            [TestCase(4, 4)]
+            [TestCase(6, 6)]
+            public void WhenValueIsNotBetween_ThenThrowException(int from, int to)
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.Between(ParamValue, from, to));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was not between '{from}' and '{to}'."));
+                Assert.That(ex.ParamName, Is.Null);
+            }
+
+            [Test]
+            public void WhenValueIsNotBetween_AndParamNameProvided_ThenThrowException()
+            {
+                var ex = Assert.Throws<ArgumentOutOfRangeException>(() => ArgMustBe.Between(ParamValue, 1, 2, ParamName));
+
+                Assert.That(ex.Message, Is.EqualTo($"Parameter value: '{ParamValue}' was not between '1' and '2'. (Parameter '{ParamName}')"));
+                Assert.That(ex.ParamName, Is.EqualTo(ParamName));
             }
         }
     }

@@ -14,7 +14,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(sbyte param, sbyte value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(byte param, byte value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(short param, short value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(ushort param, ushort value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(int param, int value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(uint param, uint value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(long param, long value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(ulong param, ulong value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString());
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(), paramName);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(float param, float value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(double param, double value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace ByteDev.ArgValidation
         public static void GreaterThan(decimal param, decimal value, string paramName = null)
         {
             if (param <= value)
-                ExceptionThrower.ThrowGreaterThanException(paramName, value.ToString(CultureInfo.InvariantCulture));
+                ExceptionThrower.ThrowGreaterThanException(value.ToString(CultureInfo.InvariantCulture), paramName);
         }
     }
 }
